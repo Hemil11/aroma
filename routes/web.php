@@ -42,9 +42,10 @@ Route::group(['prefix'=>'admin'], function(){
 });
 
 Route::group(['prefix'=>'product'], function(){
-    Route::get('add', [ProductController::class, 'add'])->name('product.add');
+    Route::get('create', [ProductController::class, 'create'])->name('product.create');
     Route::get('brand', [ProductController::class, 'brand'])->name('product.brand');
     Route::post('store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('show', [ProductController::class, 'show'])->name('product.show');
 });
 
 

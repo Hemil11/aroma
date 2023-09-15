@@ -15,5 +15,6 @@ class Product extends Model
         'Availibility',
         'category_id',
         'about',
+        'brand_id',
     ];
 }
