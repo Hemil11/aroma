@@ -17,4 +17,12 @@ class Product extends Model
         'about',
         'brand_id',
     ];
+    public function Brand()
+    {
+        return $this->belongsTo('App\Models\Brand');
+    }
+    public function Category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }   
 }

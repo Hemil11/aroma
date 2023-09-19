@@ -55,7 +55,7 @@
                                             <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="" name="name" required="required"
+                                            <input type="text" id="" name="name" required="required" value="{{ $product->name }}"
                                                 class="form-control ">
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <input type="number" id="price" name="price" placeholder="₹"
-                                                required="required" class="form-control">
+                                                required="required" value="{{ $product->price }}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -86,7 +86,7 @@
                                             <select name="category_id" id="categroy" required="required"
                                                 class="form-control">
                                                 @foreach ($categroies as $categroy)
-                                                    <option value="{{ $categroy->id }}">{{ $categroy->name }}</option>
+                                                    <option value="{{ $product->categroy_id }}"> {{ $categroy->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -108,8 +108,8 @@
                                             for="price">About<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <textarea  id="price" name="about" placeholder="About The Product"
-                                            required="required" class="form-control"></textarea>
+                                            <textarea  id="price" name="about" t
+                                            required="required" class="form-control">{{ $product->about }}</textarea>
                                         </div>
                                     </div>
 

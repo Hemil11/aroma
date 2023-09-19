@@ -48,14 +48,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
+                                        <th>Id</th>
                                         <th>name</th>
-                                        <th>img</th>
                                         <th>price</th>
-                                        <th>Availibility</th>
-                                        <th>category_id</th>
+                                        <th>category</th>
+                                        <th>brand</th>
                                         <th>about</th>
-                                        <th>brand_id</th>
+                                        <th>img</th>
+                                        <th>Availibility</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,17 +64,27 @@
                                         <tr>
                                             <td>{{ $product->id }}</td>
                                             <td>{{ $product->name }}</td>
-                                            <td>{{ $product->img }}</td>
-                                            <td>{{ $product->price }}</td>
-                                            <td>{{ $product->Availibility }}</td>
-                                            <td>{{ $product->category_id }}</td>
+                                            <td>₹.{{ $product->price }}</td>
+                                            <td>{{ $product->Category->name }}</td>
+                                            <td>{{ $product->Brand->name }}</td>
                                             <td>{{ $product->about }}</td>
-                                            <td>{{ $product->brand_id }}</td>
+                                            <td><img src="{{ asset('product_img/' . $product->img) }}" height="100"
+                                                    width="150" alt=""></td>
+                                            <td>
+                                                @if ($product->Availibility == 1)
+                                                    <i class="badge badge-primary">In Stock</i>
+                                                @else
+                                                    <i class="badge badge-danger">Out Of Stock</i>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('product.edit',['id'=>$product->id]) }}" class="btn btn-primary btn-sm">Edit</a>
+                                                <a href="{{ route('product.delete') }}" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>

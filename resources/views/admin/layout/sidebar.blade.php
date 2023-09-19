@@ -28,7 +28,7 @@
             <li><a><i class="fa fa-user">&nbsp;&nbsp;&nbsp;</i>Product<span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="{{ route('product.create') }}">Add</a></li>
-                <li><a href="{{ route('product.show') }}">View</a></li>
+                <li><a href="{{ route('product.list') }}">View</a></li>
               </ul>
             </li>
           </ul>

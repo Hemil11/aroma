@@ -12,4 +12,9 @@ class Brand extends Model
         'name',
         'categroy_id'
     ];
+    public function Product()
+    {
+        return $this->hasOne('App\Models\Product');
+    }
+
 }

@@ -19,7 +19,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $id = Auth::user()->id;
+        $products = Product::where('user_id' ,$id)->get();
+        // dD($products);
+        return view('product.list',compact('products'));
+    
     }
 
     /**
@@ -41,8 +45,8 @@ class ProductController extends Controller
     {
         $img = $request->img;
         $product_img = time().rand(100000,999999).$img->getClientOriginalName();
-        $img->move('/public/admin/p_img/'.$product_img);
-        dd(111);
+        $img->move('product_img/',$product_img);
+        // dd($product_img);
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price ;
@@ -53,6 +57,8 @@ class ProductController extends Controller
         $product->about = $request->about;
         $product->user_id = $request->user_id;
         $product->save();
+
+        return redirect('product/list');
 
         // dd($request->all());
     }
@@ -65,9 +71,7 @@ class ProductController extends Controller
      */
     public function show()
     {
-        $id = Auth::user()->id;
-        $products = Product::where('user_id' ,$id)->get();
-        return view('product.list',compact('products'));
+        // 
     }
 
     /**
@@ -76,9 +80,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        
+        $id =$request->id;
+        $categroies = Category::all();
+
+        $product = Product::where('id',$id)->first();
+        return view('product.update',compact('product','categroies')); 
     }
 
     /**
